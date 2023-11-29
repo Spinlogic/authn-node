@@ -1,0 +1,24 @@
+{
+  "name": "@yaluba/authn-node",
+  "version": "0.1.0",
+  "description": "Re-do of auth-node from Keratin.",
+  "main": "index.mjs",
+  "repository": "https://github.com/Spinlogic/authn-node.git",
+  "author": "Juan Noguera <juan@yaluba.com> (https://yaluba.com/)",
+  "license": "LGPL-3.0-or-later",
+  "private": false,
+  "dependencies": {
+    "axios": "^1.6.2",
+    "jsonwebtoken": "^9.0.2",
+    "jwks-rsa": "^3.1.0"
+  },
+  "devDependencies": {
+    "chai": "^4.3.10",
+    "chai-as-promised": "^7.1.1",
+    "mocha": "^10.2.0",
+    "node-rsa": "^1.1.1"
+  },
+  "scripts": {
+    "test": "mocha"
+  }
+}
