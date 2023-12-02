@@ -1,4 +1,6 @@
 import axios from "axios";
+import { TokenVerifier } from "./TokenVerifier.mjs";
+import { KeyChain } from "./Keychain.mjs";
 
 class AuthN {
 
@@ -11,7 +13,9 @@ class AuthN {
         keychainTTL: 0,
     }
 
-    #axiosConfig = {}
+    #axiosConfig = {};
+
+    #verifier = function(){};
 
     constructor(configur) {
         this.#config.issuer = configur.issuer;
@@ -27,6 +31,15 @@ class AuthN {
                 password: configur.password,
             },
         };
+
+        this.#verifier = TokenVerifier({
+            issuer: this.#config.issuer,
+            audiences: this.#config.audiences,
+            getKey: KeyChain({
+              issuer: this.#config.adminURL || this.#config.issuer,
+              keychainTTL: this.#config.keychainTTL,
+            }),
+          });
     }
 
     async account(id) {
@@ -82,7 +95,7 @@ class AuthN {
     
     async subjectFrom(idToken) {
         if (!idToken) return;
-        return (await this.verifier(idToken))["sub"];
+        return (await this.#verifier(idToken))["sub"];
     }
     
     #accountURL(id, action="") {
