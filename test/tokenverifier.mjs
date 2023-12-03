@@ -11,8 +11,8 @@ describe("Testing TokenVerifier", function() {
   this.timeout(0); // some test time out in my machine. Comment this if you have a powerful one :-)
   const key = new Key({ b: 2048 });
   const config = {
-    issuer: "authn.yaluba.com",
-    audiences: ["art.yaluba.com"],
+    issuer: "yourissuer.com",
+    audiences: ["youraudiences.com"],
     getKey: async () => key.exportKey("pkcs1-public-pem")
   };
   const verifier = TokenVerifier( config );
