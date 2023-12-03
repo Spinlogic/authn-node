@@ -1,6 +1,6 @@
 {
   "name": "@yaluba/authn-node",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Re-do of auth-node from Keratin.",
   "main": "index.mjs",
   "repository": "https://github.com/Spinlogic/authn-node.git",
